@@ -1,6 +1,6 @@
 ﻿using MelonMVCBookshelf.Models;
 using MelonMVCBookshelf.Models.Enums;
-using MelonMVCBookshelf.Models.Requests;
+
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,9 +17,9 @@ namespace MelonMVCBookshelf.Data
 
         }
 
-        public DbSet<Requests> BookRequests { get; set; }
-        public DbSet<Resources> Resources { get; set; }
-        public DbSet<WantedResources> WantedResources { get; set; }
+        public DbSet<Request> Requests { get; set; }
+        public DbSet<Resource> Resources { get; set; }
+        public DbSet<Request> WantedResources { get; set; }
         public DbSet<Category> Categories { get; set; }
     }
 }

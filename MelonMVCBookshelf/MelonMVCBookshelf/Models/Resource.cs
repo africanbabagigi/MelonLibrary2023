@@ -8,23 +8,22 @@ using System.Threading.Tasks;
 
 namespace MelonMVCBookshelf.Models
 {
-    public class WantedResources
+    public class Resource
     {
         [Key]
-        public int WantedBookId { get; set; }
-
-        [Required]
-        public WantedStatus Status { get; set; }
-
-        [Required]
-        [ForeignKey(nameof(Status))]
-        public int StatusId { get; set; }
+        public int ResourceId { get; set; }
 
         [Required]
         public Category Category { get; set; }
 
         [Required]
-        [ForeignKey(nameof(Category))]
+        public ResourcesStatus Status { get; set; }
+
+        [Required]
+        public string ResourceType { get; set; }
+
+        [Required] 
+        [ForeignKey (nameof(Category))]
         public int CategoryId { get; set; }
 
 
@@ -35,15 +34,10 @@ namespace MelonMVCBookshelf.Models
         public string Title { get; set; }
 
         [Required]
-        public Priority Priority { get; set; }
+        public DateTime DateOfTaking { get; set; }
 
         [Required]
-        public DateTime DateOfAdding { get; set; }
-
-        [Required]
-        public int NumberOfUsers { get; set; }
-
-        
+        public DateTime DateOfReturning { get; set; }
 
     }
 }

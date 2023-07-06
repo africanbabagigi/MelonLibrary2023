@@ -19,7 +19,7 @@ namespace MelonMVCBookshelf.Controllers
 
         public IActionResult Search(Category category, string resourceType, string title)
         {
-            var results = _context.Resources.Include($"{nameof(Resources.Category)}")
+            var results = _context.Resources.Include($"{nameof(Resource.Category)}")
             .Where(item => item.Title.Contains(title)
             && item.ResourceType.Contains(resourceType)
             && item.CategoryId == 0);
