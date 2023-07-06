@@ -19,21 +19,14 @@ namespace MelonMVCBookshelf.Controllers
             _context = context;
         }
 
-        // GET: Resources
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Resources.Include(r => r.Category);
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Resources/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> FindById(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var resources = await _context.Resources
                 .Include(r => r.Category)
                 .FirstOrDefaultAsync(m => m.ResourceId == id);
@@ -45,19 +38,19 @@ namespace MelonMVCBookshelf.Controllers
             return View(resources);
         }
 
-        // GET: Resources/Create
         public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "TypeOfCategory");
             return View();
         }
 
-        // POST: Resources/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+<<<<<<< Updated upstream
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ResourceId,Status,ResourceType,CategoryId,Author,Title,DateOfTaking,DateOfReturning")] Resource resources)
+=======
+        public async Task<IActionResult> Create([Bind("ResourceId,Status,ResourceType,CategoryId,Author,Title,DateOfTaking,DateOfReturning")] Resources resources)
+>>>>>>> Stashed changes
         {
             if (ModelState.IsValid)
             {
@@ -69,7 +62,6 @@ namespace MelonMVCBookshelf.Controllers
             return View(resources);
         }
 
-        // GET: Resources/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,12 +78,13 @@ namespace MelonMVCBookshelf.Controllers
             return View(resources);
         }
 
-        // POST: Resources/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+<<<<<<< Updated upstream
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ResourceId,Status,ResourceType,CategoryId,Author,Title,DateOfTaking,DateOfReturning")] Resource resources)
+=======
+        public async Task<IActionResult> Edit(int id, [Bind("ResourceId,Status,ResourceType,CategoryId,Author,Title,DateOfTaking,DateOfReturning")] Resources resources)
+>>>>>>> Stashed changes
         {
             if (id != resources.ResourceId)
             {
@@ -122,7 +115,7 @@ namespace MelonMVCBookshelf.Controllers
             return View(resources);
         }
 
-        // GET: Resources/Delete/5
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -141,9 +134,7 @@ namespace MelonMVCBookshelf.Controllers
             return View(resources);
         }
 
-        // POST: Resources/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var resources = await _context.Resources.FindAsync(id);

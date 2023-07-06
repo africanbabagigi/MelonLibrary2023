@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Threading.Tasks;
 using System;
+using MelonMVCBookshelf.Models;
 
 namespace MelonMVCBookshelf.Extensions
 {
@@ -16,7 +17,7 @@ namespace MelonMVCBookshelf.Extensions
 
             IServiceProvider services = scopedServices.ServiceProvider;
 
-            UserManager<IdentityUser> userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+            UserManager<User> userManager = services.GetRequiredService<UserManager<User>>();
             RoleManager<IdentityRole> roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
             Task.Run(async () =>
@@ -33,10 +34,10 @@ namespace MelonMVCBookshelf.Extensions
                     await roleManager.CreateAsync(userRole);
                 }
 
-                IdentityUser admin = await userManager.FindByNameAsync("adminname");
+                User admin = await userManager.FindByNameAsync("adminname");
                 await userManager.AddToRoleAsync(admin, "Admin");
 
-                IdentityUser testingUser = await userManager.FindByNameAsync("username");
+                User testingUser = await userManager.FindByNameAsync("username");
                 await userManager.AddToRoleAsync(admin, "User");
             })
             .GetAwaiter()

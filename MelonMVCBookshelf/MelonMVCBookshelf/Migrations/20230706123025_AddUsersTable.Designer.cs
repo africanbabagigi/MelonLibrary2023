@@ -4,14 +4,16 @@ using MelonMVCBookshelf.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MelonMVCBookshelf.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230706123025_AddUsersTable")]
+    partial class AddUsersTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,47 +37,28 @@ namespace MelonMVCBookshelf.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("MelonMVCBookshelf.Models.Request", b =>
+            modelBuilder.Entity("MelonMVCBookshelf.Models.Requests.Requests", b =>
                 {
-                    b.Property<int>("RequestsId")
+                    b.Property<int>("RequestId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Author")
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ResourceType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateOfAdding")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("NumberOfUsers")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Priority")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StatusId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("RequestsId");
+                    b.HasKey("RequestId");
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Request");
+                    b.ToTable("BookRequests");
                 });
 
-            modelBuilder.Entity("MelonMVCBookshelf.Models.Resource", b =>
+            modelBuilder.Entity("MelonMVCBookshelf.Models.Resources", b =>
                 {
                     b.Property<int>("ResourceId")
                         .ValueGeneratedOnAdd()
@@ -113,8 +96,6 @@ namespace MelonMVCBookshelf.Migrations
                     b.ToTable("Resources");
                 });
 
-<<<<<<< Updated upstream
-=======
             modelBuilder.Entity("MelonMVCBookshelf.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -226,7 +207,6 @@ namespace MelonMVCBookshelf.Migrations
                     b.ToTable("WantedResources");
                 });
 
->>>>>>> Stashed changes
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -362,7 +342,16 @@ namespace MelonMVCBookshelf.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("MelonMVCBookshelf.Models.Request", b =>
+            modelBuilder.Entity("MelonMVCBookshelf.Models.Requests.Requests", b =>
+                {
+                    b.HasOne("MelonMVCBookshelf.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("MelonMVCBookshelf.Models.Resources", b =>
                 {
                     b.HasOne("MelonMVCBookshelf.Models.Category", "Category")
                         .WithMany()
@@ -373,7 +362,7 @@ namespace MelonMVCBookshelf.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("MelonMVCBookshelf.Models.Resource", b =>
+            modelBuilder.Entity("MelonMVCBookshelf.Models.WantedResources", b =>
                 {
                     b.HasOne("MelonMVCBookshelf.Models.Category", "Category")
                         .WithMany()
