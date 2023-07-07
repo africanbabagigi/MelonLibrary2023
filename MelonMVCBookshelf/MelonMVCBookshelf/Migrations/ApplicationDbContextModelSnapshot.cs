@@ -113,8 +113,7 @@ namespace MelonMVCBookshelf.Migrations
                     b.ToTable("Resources");
                 });
 
-<<<<<<< Updated upstream
-=======
+
             modelBuilder.Entity("MelonMVCBookshelf.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -226,7 +225,6 @@ namespace MelonMVCBookshelf.Migrations
                     b.ToTable("WantedResources");
                 });
 
->>>>>>> Stashed changes
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
