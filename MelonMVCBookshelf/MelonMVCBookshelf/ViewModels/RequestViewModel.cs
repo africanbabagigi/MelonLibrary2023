@@ -11,7 +11,7 @@ namespace MelonMVCBookshelf.ViewModels
     {
         public int RequestsId { get; set; }
 
-        public WantedStatus Status { get; set; }
+        public RequestStatus Status { get; set; }
 
         public int StatusId { get; set; }
 

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MelonMVCBookshelf.Models.Enums
 {
-    public enum WantedStatus
+    public enum RequestStatus
     {
         WaitingForAccept,
         GettingReady,

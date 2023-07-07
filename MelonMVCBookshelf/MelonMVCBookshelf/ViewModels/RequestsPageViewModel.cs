@@ -1,4 +1,5 @@
 ﻿using MelonMVCBookshelf.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,22 +9,12 @@ namespace MelonMVCBookshelf.ViewModels
 {
     public class RequestsPageViewModel
     {
-
-        List<RequestViewModel> RequestViewModel = new();
-
-        public RequestsPageViewModel(List<Request> dbRequest)
+        public RequestsPageViewModel()
         {
-            RequestViewModel = dbRequest
-               .Select(x => new RequestViewModel()
-               {
-                   RequestsId=x.RequestsId,
-                   Status=x.Status,
-                   Author = x.Author,
-                   Priority=x.Priority,
-                   DateOfAdding = x.DateOfAdding,
-                   Category = x.Category.TypeOfCategory                
-               })
-               .ToList();
+            Items = new();
         }
+        public List<RequestViewModel> Items { get; set; } // Assuming MyItem is a model class representing the data          
+
+       
     }
 }

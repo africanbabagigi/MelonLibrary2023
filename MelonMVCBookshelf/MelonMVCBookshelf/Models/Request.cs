@@ -14,7 +14,7 @@ namespace MelonMVCBookshelf.Models
         public int RequestsId { get; set; }
 
         [Required]
-        public WantedStatus Status { get; set; }
+        public RequestStatus Status { get; set; }
 
         [Required]
         [ForeignKey(nameof(Status))]

@@ -61,7 +61,7 @@ namespace MelonMVCBookshelf
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -69,6 +69,11 @@ namespace MelonMVCBookshelf
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+      
         }
+
+
+      
+
     }
 }

@@ -1,23 +1,29 @@
 ﻿
-      <table>
-      <tr>
-        <th> Title </th>
-        <th> Author </th>
-        <th> Status </th>
-        <th> Priority </th>
-        <th> DateOfAdding </th>
-        <th> Category </th>
+@using MelonMVCBookshelf.ViewModels
+@model RequestsPageViewModel
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Date of Adding</th>
+            <th>Category</th>
         </tr>
-
-      <tr>
-          <td>Cell 1</td>
-          <td>Cell 2</td>
-          <td>Cell 3</td>
-          <td>Cell 4</td>
-          <td>Cell 5</td>
-          <td>Cell 6</td>
-
-      </tr>
-    </table>
-
-
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Author</td>
+                <td>@item.Status</td>
+                <td>@item.Priority</td>
+                <td>@item.DateOfAdding</td>
+                <td>@item.Category</td>
+            </tr>
+        }
+        </tbody>
+</table>
