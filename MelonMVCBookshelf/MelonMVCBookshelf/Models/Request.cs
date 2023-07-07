@@ -39,8 +39,7 @@ namespace MelonMVCBookshelf.Models
         [Required]
         public DateTime DateOfAdding { get; set; }
 
-        [Required]
-        public int NumberOfUsers { get; set; }
+       
 
         
 
