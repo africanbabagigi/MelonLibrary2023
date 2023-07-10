@@ -34,11 +34,11 @@ namespace MelonMVCBookshelf.Extensions
                     await roleManager.CreateAsync(userRole);
                 }
 
-                User admin = await userManager.FindByNameAsync("adminname");
-                await userManager.AddToRoleAsync(admin, "Admin");
+                //User admin = await userManager.FindByNameAsync("adminname");
+                //await userManager.AddToRoleAsync(admin, "Admin");
 
-                User testingUser = await userManager.FindByNameAsync("username");
-                await userManager.AddToRoleAsync(admin, "User");
+                //User testingUser = await userManager.FindByNameAsync("username");
+                //await userManager.AddToRoleAsync(admin, "User");
             })
             .GetAwaiter()
             .GetResult();

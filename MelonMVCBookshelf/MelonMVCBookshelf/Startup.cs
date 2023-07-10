@@ -1,4 +1,6 @@
 using MelonMVCBookshelf.Data;
+using MelonMVCBookshelf.Extensions;
+using MelonMVCBookshelf.Models;
 using MelonMVCBookshelf.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,7 +37,8 @@ namespace MelonMVCBookshelf
 
             services.AddTransient<IEmailSender, EmailSender>();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false).
+                AddRoles<IdentityRole>().AddRoleManager<RoleManager<IdentityRole>>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
         }
@@ -61,7 +64,9 @@ namespace MelonMVCBookshelf
 
             app.UseAuthentication();
             app.UseAuthorization();
-            
+
+            app.SeedRoles();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -71,9 +76,5 @@ namespace MelonMVCBookshelf
             });
       
         }
-
-
-      
-
     }
 }

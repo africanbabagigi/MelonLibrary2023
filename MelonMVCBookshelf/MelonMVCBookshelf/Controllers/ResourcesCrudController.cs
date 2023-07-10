@@ -10,8 +10,6 @@ using MelonMVCBookshelf.Models;
 
 namespace MelonMVCBookshelf.Controllers
 {
-    //TO DO:
-    //CREATE THE READ FUNCTION
     public class ResourcesCrudController : Controller
     {
         private readonly ApplicationDbContext _context;
