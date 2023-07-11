@@ -24,6 +24,8 @@ namespace MelonMVCBookshelf.ViewModels.Request
 
         public string Link { get; set; }
 
-        public Priority Priority { get; set; }          
+        public Priority Priority { get; set; }
+
+        public DateTime DateOfAdding { get; set; }
     }
 }

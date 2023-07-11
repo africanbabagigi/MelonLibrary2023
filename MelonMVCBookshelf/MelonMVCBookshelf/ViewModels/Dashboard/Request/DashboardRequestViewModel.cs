@@ -35,6 +35,5 @@ namespace MelonMVCBookshelf.ViewModels.Dashboard
         public Priority Priority { get; set; }
 
         public DateTime DateOfAdding { get; set; }
-
     }
 }
