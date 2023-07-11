@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MelonMVCBookshelf.Data;
 using MelonMVCBookshelf.Models;
+using MelonMVCBookshelf.Models.Enums;
 
 namespace MelonMVCBookshelf.Controllers
 {
@@ -117,6 +118,31 @@ namespace MelonMVCBookshelf.Controllers
         private bool ResourceExists(int id)
         {
             return _context.Resources.Any(e => e.ResourceId == id);
+        }
+
+        public IActionResult ReturnResourceStatus(int resourceId)
+        {
+            var resource = _context.Resources.FirstOrDefault(item => item.ResourceId == resourceId);
+            return View(ResourcesStatus.Available);
+        }
+
+        public IActionResult GetResourceDetails(int id)
+        {
+            var item = _context.Resources.Find(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            List<string> resources = new();
+            resources.Add(item.Title);
+            resources.Add(item.Author);
+            resources.Add(item.ResourceType);
+            resources.Add(item.Status.ToString());
+            resources.Add(item.DateOfTaking.ToString());
+            resources.Add(item.DateOfReturning.ToString());
+
+            return View(resources);
         }
     }
 }

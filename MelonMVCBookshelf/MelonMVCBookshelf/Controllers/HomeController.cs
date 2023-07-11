@@ -1,5 +1,7 @@
-﻿using MelonMVCBookshelf.Models;
+﻿using MelonMVCBookshelf.Data;
+using MelonMVCBookshelf.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -12,10 +14,12 @@ namespace MelonMVCBookshelf.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -32,6 +36,16 @@ namespace MelonMVCBookshelf.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Search(Category category, string resourceType, string title)
+        {
+            var results = _context.Resources.Include($"{nameof(Resource.Category)}")
+            .Where(item => item.Title.Contains(title)
+            && item.ResourceType.Contains(resourceType)
+            && item.CategoryId == 0);
+
+            return View(results);
         }
     }
 }
