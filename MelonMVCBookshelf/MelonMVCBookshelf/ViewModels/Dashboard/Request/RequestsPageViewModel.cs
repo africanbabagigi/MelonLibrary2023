@@ -1,4 +1,5 @@
 ﻿using MelonMVCBookshelf.Models;
+using MelonMVCBookshelf.ViewModels.Dashboard;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace MelonMVCBookshelf.ViewModels
         {
             Items = new();
         }
-        public List<RequestViewModel> Items { get; set; } // Assuming MyItem is a model class representing the data          
+        public List<DashboardRequestViewModel> Items { get; set; } // Assuming MyItem is a model class representing the data          
 
        
     }

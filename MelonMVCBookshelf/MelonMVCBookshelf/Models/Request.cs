@@ -17,6 +17,12 @@ namespace MelonMVCBookshelf.Models
         public RequestStatus Status { get; set; }
 
         [Required]
+        public string Type { get; set; }
+
+        [Required]
+        public string Description { get; set; }
+
+        [Required]
         [ForeignKey(nameof(Status))]
         public int StatusId { get; set; }
 
@@ -39,9 +45,13 @@ namespace MelonMVCBookshelf.Models
         [Required]
         public DateTime DateOfAdding { get; set; }
 
-       
+        [Required]
+        public string Link { get; set; }
 
-        
+
+
+
+
 
     }
 }
