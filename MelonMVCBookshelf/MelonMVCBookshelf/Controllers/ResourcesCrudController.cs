@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MelonMVCBookshelf.Data;
 using MelonMVCBookshelf.Models;
 using MelonMVCBookshelf.Models.Enums;
+using MelonMVCBookshelf.ViewModels;
 
 namespace MelonMVCBookshelf.Controllers
 {
@@ -18,6 +19,14 @@ namespace MelonMVCBookshelf.Controllers
         public ResourcesCrudController(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        public IActionResult Index() 
+        {
+            var resources = _context.Resources.Select(item=> new HRResourcesViewModel(item)).ToList();
+            var model = new HRPageResourceViewModel();
+            model.Items = resources;
+            return View(model);
         }
 
         public IActionResult Create()
@@ -120,10 +129,29 @@ namespace MelonMVCBookshelf.Controllers
             return _context.Resources.Any(e => e.ResourceId == id);
         }
 
-        public IActionResult ReturnResourceStatus(int resourceId)
+        public IActionResult ToggleResourceStatus(int id)
         {
-            var resource = _context.Resources.FirstOrDefault(item => item.ResourceId == resourceId);
-            return View(ResourcesStatus.Available);
+
+            var resource = _context.Resources.FirstOrDefault(x => x.ResourceId == id);
+            if (resource == null)
+            {
+                return NotFound();
+            }
+
+            if (resource.Status == ResourcesStatus.Taken)
+            {
+                resource.Status = ResourcesStatus.Available;
+            }
+
+            else
+            {
+                resource.Status = ResourcesStatus.Taken;
+            }
+
+            _context.Update(resource);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index"); //TODO: Redirect to reguests
         }
 
         public IActionResult GetResourceDetails(int id)
@@ -137,7 +165,7 @@ namespace MelonMVCBookshelf.Controllers
             List<string> resources = new();
             resources.Add(item.Title);
             resources.Add(item.Author);
-            resources.Add(item.ResourceType);
+            resources.Add(item.ResourceType.ToString());
             resources.Add(item.Status.ToString());
             resources.Add(item.DateOfTaking.ToString());
             resources.Add(item.DateOfReturning.ToString());

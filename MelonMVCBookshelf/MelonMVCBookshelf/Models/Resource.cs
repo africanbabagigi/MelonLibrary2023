@@ -20,7 +20,7 @@ namespace MelonMVCBookshelf.Models
         public ResourcesStatus Status { get; set; }
 
         [Required]
-        public string ResourceType { get; set; }
+        public ResourceType ResourceType { get; set; }
 
         [Required] 
         [ForeignKey (nameof(Category))]
@@ -38,6 +38,9 @@ namespace MelonMVCBookshelf.Models
 
         [Required]
         public DateTime DateOfReturning { get; set; }
+
+        [Required]
+        public string Link { get; set; }
 
     }
 }

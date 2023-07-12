@@ -36,7 +36,9 @@ namespace MelonMVCBookshelf.ViewModels
         public DateTime DateOfTaking { get; set; }
 
         public DateTime DateOfReturning { get; set; }
-   
-      
+
+        public ResourceType ResourceType { get; set; }
+
+        public string Link { get; set; }
     }
 }

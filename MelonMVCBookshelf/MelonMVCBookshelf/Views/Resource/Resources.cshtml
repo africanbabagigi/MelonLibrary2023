@@ -1,0 +1,116 @@
+﻿@model HRPageResourceViewModel
+
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar-->
+    <div class="border-end bg-white" id="sidebar-wrapper">
+        <img src="melon-bookshelf-logo.svg">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.html">Home</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Resources</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="RequestDetails.html">Requests</a>
+        </div>
+    </div>
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- Top navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+                <button class="btn" id="sidebarToggle">
+                    <img class="hamburger" src="assets/menu.svg" alt="Menu">
+
+                </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                        <li class="nav-item active"><a class="nav-link" href="RegisterPage.html">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="LogInPage.html">Log in</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page content-->
+        <div class="container-fluid">
+            <form class="row">
+                <div class="form-group col-md-4 ">
+                    <label class="form-label">Category:</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option value="1">.NET</option>
+                        <option value="2">PHP</option>
+                        <option value="3">other</option>
+                    </select>
+                </div>
+                <div class="form-group col">
+                    <label class="form-label" for="title">Title:</label>
+                    <input class="form-control search-field" id="title" type="text" placeholder="">
+                </div>
+                <div class="form-group col-md-1 ">
+
+                    <button type="button" class="btn btn-outline-primary" style="margin-top: 31px">
+                        <!--<img class="search-btn" src="assets/searchIcon.svg" >-->
+                        Search
+                    </button>
+                </div>
+
+            </form>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Link</th>
+                        <th scope="col">Status</th>
+                        <th><a href="NewResource.html"><button class="btn btn-success">Add new</button></a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>mdo</td>
+                        <td><a href="google.com"></a></td>
+                        <td><a href="https://www.youtube.com/" class="btn btn-link">Download</a></td>
+                        <td></td>
+                        <td><a href="ResourcesEdit.html"><button class="btn btn-primary">Edit</button></a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>fat</td>
+                        <td></td>
+                        <td><a href="https://www.youtube.com/" class="btn btn-link">Download</a></td>
+                        <td></td>
+                        <td><a href="ResourcesEdit.html"><button class="btn btn-primary">Edit</button></a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>twitter</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button class="btn btn-primary">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>twitter</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button class="btn btn-primary">Edit</button></td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
