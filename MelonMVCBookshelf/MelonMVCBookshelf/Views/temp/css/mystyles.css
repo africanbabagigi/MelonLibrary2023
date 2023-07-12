@@ -19,3 +19,11 @@
 .search-field{
     width:100% ;
 }
+
+#details-btn{
+    padding:0;
+}
+
+#content-container{
+    padding-left: 1rem;
+}
