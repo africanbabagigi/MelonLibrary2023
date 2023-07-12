@@ -45,22 +45,27 @@
             </nav>
             <!-- Page content-->
             <div class="container-fluid">
-                <form class="form-inline">
-                    <div class="form-group ">
-                        <label class="form-label select-label">Category:</label>
-                        <select class="search" class="form-select" aria-label="Default select example">
+                <form class="row">
+                    <div class="form-group col-md-4 ">
+                        <label class="form-label">Category:</label>
+                        <select class="form-select" aria-label="Default select example">
                             <option value="1">.NET</option>
                             <option value="2">PHP</option>
                             <option value="3">other</option>
                         </select>
                     </div>
-                    <div class="mt-2 form-group">
-                        <label for="title">Title:</label>
-                        <input class="search" class="form-control" id="title" type="text" placeholder="">
+                    <div class="form-group col">
+                        <label class="form-label" for="title">Title:</label>
+                        <input class="form-control search-field" id="title" type="text" placeholder="">
                     </div>
-                    <button type="button" class="btn btn-outline-primary">
-                        <img class="hamburger" src="assets/menu.svg" alt="Menu">
-                    </button>
+                    <div class="form-group col-md-1 ">
+                        
+                        <button type="button" class="btn btn-outline-primary" style="margin-top: 31px">
+                            <!--<img class="search-btn" src="assets/searchIcon.svg" >-->
+                            Search
+                        </button>
+                    </div>
+                    
                 </form>
                 <table class="table">
                     <thead class="thead-dark">
@@ -72,7 +77,7 @@
                             <th scope="col">Type</th>
                             <th scope="col">Link</th>
                             <th scope="col">Status</th>
-                            <th><a href="NewRequest.html"><button class="btn btn-success">Add new</button></a></th>
+                            <th><a href="NewResource.html"><button class="btn btn-success">Add new</button></a></th>
                         </tr>
                     </thead>
                     <tbody>
