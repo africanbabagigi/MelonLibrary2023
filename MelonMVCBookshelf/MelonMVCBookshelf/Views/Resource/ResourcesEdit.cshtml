@@ -1,4 +1,5 @@
 ﻿@using MelonMVCBookshelf.ViewModels
+@using MelonMVCBookshelf.Models.Enums
 @model HRResourcesViewModel
 
 <div class="d-flex" id="wrapper">
@@ -40,10 +41,7 @@
                 <p class="mt-2 font-weight-bold ">Category:</p>
             </div>
             <span>Type:</span>
-            <select asp-for=""  class="custom-select custom-select-lg mb-3">
-                <option value="1">Digital</option>
-                <option value="2">Physical copy</option>
-                <option value="3">Online course</option>
+            <select asp-for="@Model.ResourceType" asp-items="Html.GetEnumSelectList<ResourceType>()" class="custom-select custom-select-lg mb-3">
             </select>
             <div class="mt-2">
                 <label for="title">Title:</label>
@@ -54,25 +52,20 @@
                 <input asp-for="@Model.Author" class="form-control" id="author" type="text" placeholder="">
             </div>
             @*<div class="mt-2 form-group">
-                <label for="detailsRequests">Details:</label>
-                <textarea class="form-control" id="detailsRequests" rows="3"></textarea>
-            </div>*@
+                    <label for="detailsRequests">Details:</label>
+                    <textarea class="form-control" id="detailsRequests" rows="3"></textarea>
+                </div>*@
 
             <div class="mt-2 md-2">
                 <label for="link">Link:</label>
                 <input asp-for="@Model.Link" class="form-control" id="link" type="text" placeholder="">
             </div>
-            <span>Priority:</span>
-            <select class="mt-2 custom-select custom-select-lg mb-3">
-                <option value="1">Low</option>
-                <option value="2">Medium</option>
-                <option value="3">High</option>
-            </select>
+
             <span>Status:</span>
-            <select class="mt-2 custom-select custom-select-lg mb-3">
+            <select asp-for="@Model.Status" asp-items="Html.GetEnumSelectList<ResourcesStatus>()"class="mt-2 custom-select custom-select-lg mb-3">
             </select>
             <div class="mt-2">
-                <label>    Date: </label>
+                <label> Date: </label>
                 <input asp-for="@Model.DateOfTaking" type="date" name="date" />
             </div>
             <button type="submit" class=" mt-4 btn btn-primary">Submit</button>

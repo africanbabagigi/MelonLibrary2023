@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MelonMVCBookshelf.Data;
 using MelonMVCBookshelf.Models;
 using MelonMVCBookshelf.Models.Enums;
+using MelonMVCBookshelf.ViewModels;
 
 namespace MelonMVCBookshelf.Controllers
 {
@@ -18,6 +19,14 @@ namespace MelonMVCBookshelf.Controllers
         public ResourcesCrudController(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        public IActionResult Index() 
+        {
+            var resources = _context.Resources.Select(item=> new HRResourcesViewModel(item)).ToList();
+            var model = new HRPageResourceViewModel();
+            model.Items = resources;
+            return View(model);
         }
 
         public IActionResult Create()
@@ -156,7 +165,7 @@ namespace MelonMVCBookshelf.Controllers
             List<string> resources = new();
             resources.Add(item.Title);
             resources.Add(item.Author);
-            resources.Add(item.ResourceType);
+            resources.Add(item.ResourceType.ToString());
             resources.Add(item.Status.ToString());
             resources.Add(item.DateOfTaking.ToString());
             resources.Add(item.DateOfReturning.ToString());

@@ -1,5 +1,6 @@
 ﻿using MelonMVCBookshelf.Data;
 using MelonMVCBookshelf.Models;
+using MelonMVCBookshelf.Models.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -38,11 +39,11 @@ namespace MelonMVCBookshelf.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Search(Category category, string resourceType, string title)
+        public IActionResult Search(Category category, ResourceType resourceType, string title)
         {
             var results = _context.Resources.Include($"{nameof(Resource.Category)}")
             .Where(item => item.Title.Contains(title)
-            && item.ResourceType.Contains(resourceType)
+            && item.ResourceType==resourceType
             && item.CategoryId == 0);
 
             return View(results);

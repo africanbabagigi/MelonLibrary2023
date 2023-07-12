@@ -15,7 +15,7 @@ namespace MelonMVCBookshelf.ViewModels
 
         public ResourcesStatus Status { get; set; }
 
-        public string ResourceType { get; set; }
+        public ResourceType ResourceType { get; set; }
 
         public string Author { get; set; }
 
@@ -24,5 +24,8 @@ namespace MelonMVCBookshelf.ViewModels
         public DateTime DateOfTaking { get; set; }
 
         public DateTime DateOfReturning { get; set; }
+
+        
+
     }
 }
