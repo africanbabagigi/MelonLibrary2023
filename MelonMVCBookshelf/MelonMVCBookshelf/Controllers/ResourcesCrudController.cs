@@ -120,10 +120,29 @@ namespace MelonMVCBookshelf.Controllers
             return _context.Resources.Any(e => e.ResourceId == id);
         }
 
-        public IActionResult ReturnResourceStatus(int resourceId)
+        public IActionResult ToggleResourceStatus(int id)
         {
-            var resource = _context.Resources.FirstOrDefault(item => item.ResourceId == resourceId);
-            return View(ResourcesStatus.Available);
+
+            var resource = _context.Resources.FirstOrDefault(x => x.ResourceId == id);
+            if (resource == null)
+            {
+                return NotFound();
+            }
+
+            if (resource.Status == ResourcesStatus.Taken)
+            {
+                resource.Status = ResourcesStatus.Available;
+            }
+
+            else
+            {
+                resource.Status = ResourcesStatus.Taken;
+            }
+
+            _context.Update(resource);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index"); //TODO: Redirect to reguests
         }
 
         public IActionResult GetResourceDetails(int id)
