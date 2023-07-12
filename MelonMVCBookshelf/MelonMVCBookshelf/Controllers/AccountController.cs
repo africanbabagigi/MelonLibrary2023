@@ -14,17 +14,13 @@ namespace MelonMVCBookshelf.Controllers
         private readonly ApplicationDbContext _db;
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
-        private readonly IEmailSender _emailSender; 
+        private readonly IEmailSender _emailSender;
 
-        public AccountController(UserManager<User> _userManager,SignInManager<User> _signInManager, ApplicationDbContext _Db)
+        public AccountController(ApplicationDbContext db, UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender)
         {
-            userManager = _userManager;
-            signInManager = _signInManager;
-            _db = _Db;
-        }
-
-        public AccountController(IEmailSender emailSender)
-        {
+            _db = db;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
             _emailSender = emailSender;
         }
 

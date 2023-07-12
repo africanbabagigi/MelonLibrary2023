@@ -1,5 +1,7 @@
 ﻿using MelonMVCBookshelf.Data;
 using MelonMVCBookshelf.ViewModels;
+using MelonMVCBookshelf.ViewModels.Dashboard;
+using MelonMVCBookshelf.ViewModels.Request;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -26,7 +28,7 @@ namespace MelonMVCBookshelf.Controllers
         // POST: My/ResourceRequest
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ResourceRequest(RequestViewModel model)
+        public ActionResult ResourceRequest(DashboardRequestViewModel model)
         {
             if (ModelState.IsValid)
             {

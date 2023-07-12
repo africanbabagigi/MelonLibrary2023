@@ -2,6 +2,8 @@
 using MelonMVCBookshelf.Models;
 
 using MelonMVCBookshelf.ViewModels;
+using MelonMVCBookshelf.ViewModels.Dashboard;
+using MelonMVCBookshelf.ViewModels.Request;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -19,13 +21,13 @@ namespace MelonMVCBookshelf.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()     
+        public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Requests.Include(r => r.Category).ToList();
             RequestsPageViewModel requestsPageViewModel = new();
 
-            var items = new RequestViewModel { Title = "Title 1", Author = "Author 1", Status = Models.Enums.RequestStatus.Delivering, Priority = Models.Enums.Priority.High, DateOfAdding = DateTime.Now, Category = "Category 1" };
-            var items1 = new RequestViewModel { Title = "Title 2", Author = "Author 2", Status = Models.Enums.RequestStatus.Delivering, Priority = Models.Enums.Priority.High, DateOfAdding = DateTime.Now, Category = "Category 2" };
+            var items = new DashboardRequestViewModel { Title = "Title 1", Author = "Author 1", Status = Models.Enums.RequestStatus.Delivering, Priority = Models.Enums.Priority.High, DateOfAdding = DateTime.Now};
+            var items1 = new DashboardRequestViewModel { Title = "Title 2", Author = "Author 2", Status = Models.Enums.RequestStatus.Delivering, Priority = Models.Enums.Priority.High, DateOfAdding = DateTime.Now };
             requestsPageViewModel.Items.Add(items);
             requestsPageViewModel.Items.Add(items1);
 
