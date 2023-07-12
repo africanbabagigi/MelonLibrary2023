@@ -22,7 +22,7 @@
             <div class="list-group list-group-flush">
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Home</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="ResourcesPage.html">Resources</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="RequestDetails.html">Requests</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Requests.html">Requests</a>
             </div>
         </div>
         <!-- Page content wrapper-->
@@ -45,62 +45,60 @@
             </nav>
 
             <div class="container-fluid">
-                <h1 class="mt-4 mb-4">Edit request</h1>
+                <h1 class="mt-4 mb-4">Edit resource</h1>
             </div>
             <form>
-                <button type="button" class="btn btn-secondary"> Upvote &#x1F44D</button>
-                <button type="button" class="btn btn-secondary"> Follow &#x2764</button>
-                <div class="d-block mt-2">
-                    <p class="mt-2 font-weight-bold ">Category:</p>
-                </div>
-                <span>Type:</span>
-                <select class="custom-select custom-select-lg mb-3">
-                    <option value="1">Digital</option>
-                    <option value="2">Physical copy</option>
-                    <option value="3">Online course</option>
-                </select>
-                <div class="mt-2">
-                    <label for="title">Title:</label>
-                    <input class="form-control" id="title" type="text" placeholder="">
-                </div>
-                <div class="mt-2">
-                    <label for="author">Author:</label>
-                    <input class="form-control" id="author" type="text" placeholder="">
-                </div>
-                <div class="mt-2 form-group">
-                    <label for="detailsRequests">Details:</label>
-                    <textarea class="form-control" id="detailsRequests" rows="3"></textarea>
-                </div>
+                <div id="content-container">
+                    <button type="button" class="btn btn-secondary"> Upvote &#x1F44D</button>
+                    <button type="button" class="btn btn-secondary"> Follow &#x2764</button>
+                    <div class="d-block mt-2">
+                        <p class="mt-2 font-weight-bold ">Category:</p>
+                    </div>
+                    <span>Type:</span>
+                    <select class="custom-select custom-select-lg mb-3">
+                        <option value="1">Digital</option>
+                        <option value="2">Physical copy</option>
+                        <option value="3">Online course</option>
+                    </select>
+                    <div class="mt-2">
+                        <label for="title">Title:</label>
+                        <input class="form-control" id="title" type="text" placeholder="">
+                    </div>
+                    <div class="mt-2">
+                        <label for="author">Author:</label>
+                        <input class="form-control" id="author" type="text" placeholder="">
+                    </div>
+                    <div class="mt-2 form-group">
+                        <label for="detailsRequests">Details:</label>
+                        <textarea class="form-control" id="detailsRequests" rows="3"></textarea>
+                    </div>
 
-                <div class="mt-2 md-2">
-                    <label for="link">Link:</label>
-                    <input class="form-control" id="link" type="text" placeholder="">
+                    <div class="mt-2 md-2">
+                        <label for="link">Link:</label>
+                        <input class="form-control" id="link" type="text" placeholder="">
+                    </div>
+                    <span>Priority:</span>
+                    <select class="mt-2 custom-select custom-select-lg mb-3">
+                        <option value="1">Low</option>
+                        <option value="2">Medium</option>
+                        <option value="3">High</option>
+                    </select>
+                    <span>Status:</span>
+                    <select class="mt-2 custom-select custom-select-lg mb-3">
+                        <option value="1">Pending</option>
+                        <option value="2">Being prepared</option>
+                        <option value="3">Delivering</option>
+                        <option value="4">Delivered</option>
+                        <option value="5">Rejected</option>
+                    </select>
+                    <div class="mt-2">
+                        <label>
+                            Date:
+                            <input type="date" name="date" />
+                        </label>
+                    </div>
+                    <button type="submit" class=" mt-4 btn btn-primary">Submit</button>
                 </div>
-                <span>Priority:</span>
-                <select class="mt-2 custom-select custom-select-lg mb-3">
-                    <option value="1">Low</option>
-                    <option value="2">Medium</option>
-                    <option value="3">High</option>
-                </select>
-                <span>Status:</span>
-                <select class="mt-2 custom-select custom-select-lg mb-3">
-                    <option value="1">Pending</option>
-                    <option value="2">Being prepared</option>
-                    <option value="3">Delivering</option>
-                    <option value="4">Delivered</option>
-                    <option value="5">Rejected</option>
-                </select>
-                <div class="form-group">
-                    <label for="motivationRequests">Motivation:</label>
-                    <textarea class="form-control" id="motivationRequests" rows="3"></textarea>
-                </div>
-                <div class="mt-2">
-                    <label>
-                        Date:
-                        <input type="date" name="date" />
-                    </label>
-                </div>
-                <button type="submit" class=" mt-4 btn btn-primary">Submit</button>
             </form>
 
         </div>
