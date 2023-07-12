@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace MelonMVCBookshelf.ViewModels.Dashboard
 {
-    
-
     public class DashboardResourceViewModel
     {
         public DashboardResourceViewModel()
         {
-          
+
         }
 
         public DashboardResourceViewModel(Resource resource)
