@@ -34,10 +34,10 @@ namespace MelonMVCBookshelf
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-
+            services.AddRazorPages();
             services.AddTransient<IEmailSender, EmailSender>();
 
-            services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false).
+            services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false).
                 AddRoles<IdentityRole>().AddRoleManager<RoleManager<IdentityRole>>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
@@ -64,7 +64,6 @@ namespace MelonMVCBookshelf
 
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.SeedRoles();
 
             app.UseEndpoints(endpoints =>
