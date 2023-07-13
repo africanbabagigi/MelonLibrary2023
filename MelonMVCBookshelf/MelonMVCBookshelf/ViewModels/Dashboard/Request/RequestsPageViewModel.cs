@@ -14,7 +14,7 @@ namespace MelonMVCBookshelf.ViewModels
         {
             Items = new();
         }
-        public List<DashboardRequestViewModel> Items { get; set; } // Assuming MyItem is a model class representing the data          
+        public List<Dashboard.DashboardRequestViewModel> Items { get; set; } // Assuming MyItem is a model class representing the data          
 
        
     }

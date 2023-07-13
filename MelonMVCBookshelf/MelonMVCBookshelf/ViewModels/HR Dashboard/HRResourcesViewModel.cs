@@ -17,10 +17,11 @@ namespace MelonMVCBookshelf.ViewModels
         {
             ResourceId = resource.ResourceId;
             Author = resource.Author;
-            Title = resource.Author;
+            Title = resource.Title;
             Status = resource.Status;
             DateOfTaking = resource.DateOfTaking;
             DateOfReturning = resource.DateOfReturning;
+            Category = new CategoryViewModel(resource.Category);
         }
 
         public int ResourceId { get; set; }

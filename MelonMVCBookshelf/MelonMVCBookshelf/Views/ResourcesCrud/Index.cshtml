@@ -61,46 +61,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>mdo</td>
-                        <td><a href="google.com"></a></td>
-                        <td><a href="https://www.youtube.com/" class="btn btn-link">Download</a></td>
-                        <td></td>
-                        <td><a href="ResourcesEdit.html"><button class="btn btn-primary">Edit</button></a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>fat</td>
-                        <td></td>
-                        <td><a href="https://www.youtube.com/" class="btn btn-link">Download</a></td>
-                        <td></td>
-                        <td><a href="ResourcesEdit.html"><button class="btn btn-primary">Edit</button></a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>twitter</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button class="btn btn-primary">Edit</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>twitter</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button class="btn btn-primary">Edit</button></td>
-
+                    @{int count = 0;}
+                    @foreach (var item in Model.Items)
+                    {
+                        count++;
+                        <tr>
+                            <th scope="row">@count</th>
+                            <td>@item.Category</td>
+                            <td>@item.Title</td>
+                            <td>@item.Author</td>
+                            <td>@item.ResourceType.ToString()</td>
+                            <td><a href="@item.Link" class="btn btn-link">Download</a></td>
+                            <td>@item.Status.ToString()</td>
+                            <td><a href="ResourcesEdit.html"><button asp-controller = "ResourcesCrud" asp-action = "Edit" asp-route-resouceId="@item.ResourceId" class="btn btn-primary">Edit</button></a></td>
+                        </tr>
+                    }
                     </tr>
                 </tbody>
             </table>

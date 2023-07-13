@@ -9,7 +9,21 @@ namespace MelonMVCBookshelf.ViewModels
 {
     public class RequestEditViewModel
     {
-       
+        public RequestEditViewModel()
+        {
+        }
+
+        public RequestEditViewModel(Models.Request request)
+        {
+            RequestsId = request.RequestsId;
+            Status = request.Status;
+            Author = request.Author;
+            Title = request.Title;
+            Priority = request.Priority;
+            DateOfAdding = request.DateOfAdding;
+            Type = request.Type ;
+        }
+
         public int RequestsId { get; set; }       
 
         public RequestStatus Status { get; set; }
@@ -24,8 +38,12 @@ namespace MelonMVCBookshelf.ViewModels
        
         public string Title { get; set; }
     
-        public string Priority { get; set; }
+        public Priority Priority { get; set; }
      
         public DateTime DateOfAdding { get; set; }
+
+        public string Type { get; set; }
+
+        public string Link { get; set; }
     }
 }

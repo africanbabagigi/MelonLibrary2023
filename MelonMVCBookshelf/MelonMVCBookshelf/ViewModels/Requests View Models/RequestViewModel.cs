@@ -7,7 +7,25 @@ using System.Threading.Tasks;
 namespace MelonMVCBookshelf.ViewModels.Request
 {
     public class RequestViewModel
-    {     
+    {
+        public RequestViewModel()
+        {
+        }
+
+        public RequestViewModel(Models.Request request)
+        {
+            RequestsId = request.CategoryId;
+
+            Status = request.Status;
+            Type = request.Type;
+            Title = request.Title;
+            Author = request.Author;
+            Description = request.Description;
+            Link = request.Link;
+            Priority = request.Priority;
+            DateOfAdding = request.DateOfAdding;
+        }
+
         public int RequestsId { get; set; }
 
         public virtual CategoryViewModel Category { get; set; }
