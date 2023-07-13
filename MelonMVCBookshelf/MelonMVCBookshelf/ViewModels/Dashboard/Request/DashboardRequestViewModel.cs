@@ -37,5 +37,9 @@ namespace MelonMVCBookshelf.ViewModels.Dashboard
         public DateTime DateOfAdding { get; set; }
 
         public string Type { get; set; }
+
+       
+
+        public string Link { get; set; }
     }
 }

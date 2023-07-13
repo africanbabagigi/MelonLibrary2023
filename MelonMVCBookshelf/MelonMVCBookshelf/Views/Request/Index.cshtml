@@ -41,59 +41,36 @@
                         <th scope="col">Author</th>
                         <th scope="col">Title</th>
                         <th scope="col">Date of addition</th>
-                        <th><a href="newRequest.html"><button  asp-controller="RequestController" asp-action="Add" class="btn btn-success">Add new</button></a></th>
+                        <th><a href="newRequest.html"><button asp-controller="RequestController" asp-action="Add" class="btn btn-success">Add new</button></a></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>mdo</td>
-                        <td><a href="google.com"></a></td>
-                        <td></td>
+                    @{ foreach (var item in Model.Items)
+                        {
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>mdo</td>
+                                <td><a href="google.com"></a></td>
+                                <td></td>
 
-                        <td>
-                            <div>
-                                <a href="EditRequestPage.html">
-                                    <button asp-controller="RequestController" asp-action="Edit" class="btn btn-primary">Edit</button>
-                                </a>
-                                <a href="RequestsDetails.html"><button asp-controller="RequestController" asp-action="Details" class="btn btn-info ml-1">Details</button></a>
-                                <button  asp-controller="RequestController" asp-action="Delete" class="btn btn-danger ml-1">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>fat</td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <div>
-                                <a href="EditRequestPage.html"><button asp-controller="RequestController" asp-action="Add" class="btn btn-primary">Edit</button></a>
-                                <a href="RequestsDetails.html"><button asp-controller="RequestController" asp-action="Details" class="btn btn-info ml-1">Details</button></a>
-                                <button asp-controller="RequestController" asp-action="Delete" class="btn btn-danger ml-1">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>twitter</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>twitter</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                                <td>
+                                    <div>
+                                        @Html.ActionLink("Edit", "Edit", "Request", routeValues: new { id = item.RequestsId }, htmlAttributes: new { @class = "btn btn-primary" })
+                                        <a asp-controller="RequestController" asp-action="Edit" class="btn btn-primary">
+                                            Edit
+                                        </a>
+                                        <a href="EditRequestPage.html">
+                                            <button asp-controller="RequestController" asp-action="Edit" class="btn btn-primary">Edit</button>
+                                        </a>
+                                        <a href="RequestsDetails.html"><button asp-controller="RequestController" asp-action="Details" class="btn btn-info ml-1">Details</button></a>
+                                        <button asp-controller="RequestController" asp-action="Delete" class="btn btn-danger ml-1">Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }}}
+
                 </tbody>
             </table>
 

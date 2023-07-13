@@ -1,0 +1,87 @@
+﻿@using MelonMVCBookshelf.ViewModels.Dashboard
+@using MelonMVCBookshelf.Models.Enums
+@model DashboardRequestViewModel
+
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar-->
+    <div class="border-end bg-white" id="sidebar-wrapper">
+        <img src="melon-bookshelf-logo.svg">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Home</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="ResourcesPage.html">Resources</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Requests.html">Requests</a>
+        </div>
+    </div>
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- Top navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+                <button class="btn" id="sidebarToggle">
+                    <img class="hamburger" src="assets/menu.svg" alt="Menu">
+
+                </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                        <li class="nav-item active"><a class="nav-link" href="RegisterPage.html">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="LogInPage.html">Log in</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <h1 class="mt-4 mb-4">Edit request</h1>
+        </div>
+        <form>
+            <div id="content-container">
+                <button asp-controller="RequestController" asp-action="" type="button" class="btn btn-secondary"> Upvote &#x1F44D</button>
+                <button asp-controller="RequestController" asp-action="Add" type="button" class="btn btn-secondary"> Follow &#x2764</button>
+                <div class="d-block mt-2">
+                    <p class="mt-2 font-weight-bold ">Category:</p>
+                </div>
+                <span>Type:</span>
+                <select asp-for="@Model.Type" class="custom-select custom-select-lg mb-3">
+                    <option value="Digital">Digital</option>
+                    <option value="Physical copy">Physical copy</option>
+                    <option value="Online course">Online course</option>
+                </select>
+                <div class="mt-2">
+                    <label for="title">Title:</label>
+                    <input asp-for="@Model.Title" class="form-control" id="title" type="text" placeholder="">
+                </div>
+                <div class="mt-2">
+                    <label for="author">Author:</label>
+                    <input class="form-control" id="author" type="text" placeholder="">
+                </div>
+                <div class="mt-2 form-group">
+                    <label for="detailsRequests">Details:</label>
+                    <textarea class="form-control" id="detailsRequests" rows="3"></textarea>
+                </div>
+
+                <div class="mt-2 md-2">
+                    <label for="link">Link:</label>
+                    <input asp-for="@Model.Link" class="form-control" id="link" type="text" placeholder="">
+                </div>
+                <span>Priority:</span>
+                <select asp-for="@Model.Priority" asp-items="Html.GetEnumSelectList<Priority>()" class="mt-2 custom-select custom-select-lg mb-3">
+                    
+                </select>
+                <span>Status:</span>
+                <select asp-for="@Model.Status" asp-items="Html.GetEnumSelectList<RequestStatus>()" class="mt-2 custom-select custom-select-lg mb-3">
+          
+                </select>
+               
+                <div class="mt-2">
+                    <label>
+                        Date:
+                        <input asp-for="@Model.DateOfAdding" type="date" name="date" />
+                    </label>
+                </div>
+                <button type="submit" class=" mt-4 btn btn-primary">Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>
