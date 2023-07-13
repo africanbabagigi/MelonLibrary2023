@@ -7,8 +7,10 @@ namespace MelonMVCBookshelf.Models.Enums
 {
     public enum RequestStatus
     {
-        WaitingForAccept,
-        GettingReady,
-        Delivering
+        Pending,
+        BeingPrepared,
+        Delivering,
+        Delivered,
+        Rejected
     }
 }

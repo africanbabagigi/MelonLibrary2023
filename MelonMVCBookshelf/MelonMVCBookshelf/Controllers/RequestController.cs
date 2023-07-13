@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using MelonMVCBookshelf.Models;
+using System.Collections.Generic;
 
 namespace MelonMVCBookshelf.Controllers
 {
@@ -21,10 +22,10 @@ namespace MelonMVCBookshelf.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Requests.Include(r => r.Category).ToList();
-            RequestsPageViewModel requestsPageViewModel = new();
+            ViewModels.RequestsPageViewModel requestsPageViewModel = new();
 
-            var items = new DashboardRequestViewModel { Title = "Title 1", Author = "Author 1", Status = Models.Enums.RequestStatus.Delivering, Priority = Models.Enums.Priority.High, DateOfAdding = DateTime.Now };
-            var items1 = new DashboardRequestViewModel { Title = "Title 2", Author = "Author 2", Status = Models.Enums.RequestStatus.Delivering, Priority = Models.Enums.Priority.High, DateOfAdding = DateTime.Now };
+            var items = new ViewModels.Dashboard.DashboardRequestViewModel { Title = "Title 1", Author = "Author 1", Status = Models.Enums.RequestStatus.Delivering, Priority = Models.Enums.Priority.High, DateOfAdding = DateTime.Now };
+            var items1 = new ViewModels.Dashboard.DashboardRequestViewModel { Title = "Title 2", Author = "Author 2", Status = Models.Enums.RequestStatus.Delivering, Priority = Models.Enums.Priority.High, DateOfAdding = DateTime.Now };
             requestsPageViewModel.Items.Add(items);
             requestsPageViewModel.Items.Add(items1);
 
@@ -56,7 +57,7 @@ namespace MelonMVCBookshelf.Controllers
         // POST: My/ResourceRequest
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ResourceRequest(DashboardRequestViewModel model)
+        public ActionResult ResourceRequest(ViewModels.Dashboard.DashboardRequestViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -99,14 +100,14 @@ namespace MelonMVCBookshelf.Controllers
             // For example, if you're using Entity Framework, you can do something like this:
             using (var context = new ApplicationDbContext())
             {
-                var data = context.Requests.FirstOrDefault(m => m.RequestsId == id);
+                var data = _context.Requests.FirstOrDefault(m => m.RequestsId == id);
                 return data;
             }
 
             // If you're using a different data access technology, adjust the code accordingly
 
             // If the data is not found, return null or throw an exception, based on your requirements
-            return null;
+           
         }
 
         [HttpPost]
@@ -183,6 +184,22 @@ namespace MelonMVCBookshelf.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Deatils(int id)
+        {
+            var result =  _context.Requests.Where(r=>r.RequestsId==id).Select(r=>new DashboardRequestViewModel
+            {
+                RequestsId=r.RequestsId,
+                Title=r.Title,
+                Author= r.Author,
+                Category=r.Category.ToString(),
+                DateOfAdding = r.DateOfAdding,
+                Priority=r.Priority,
+                Type=r.Type            
+            });
+                          
+            return View(result);
         }
     }
 }
