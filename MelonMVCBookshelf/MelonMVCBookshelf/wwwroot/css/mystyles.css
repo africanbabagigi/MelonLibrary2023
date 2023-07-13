@@ -1,0 +1,29 @@
+.hamburger {
+    display: block;
+    width: 2rem;
+}
+
+.logo {
+    display: block;
+    width: 3rem;
+       
+}
+
+.bold{
+    font-weight:500;
+}
+
+​​​​​​​​​​​​​
+
+
+.search-field{
+    width:100% ;
+}
+
+#details-btn{
+    padding:0;
+}
+
+#content-container{
+    padding-left: 1rem;
+}

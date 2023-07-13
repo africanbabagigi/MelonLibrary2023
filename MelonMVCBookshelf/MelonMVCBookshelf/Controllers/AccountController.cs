@@ -48,9 +48,9 @@ namespace MelonMVCBookshelf.Controllers
             var user = new User()
             {
                 Email = model.Email,
-                PhoneNumber = model.PhoneNumber,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
+                UserName = model.Email,
             };
 
 
@@ -62,7 +62,7 @@ namespace MelonMVCBookshelf.Controllers
                 return RedirectToAction(nameof(AccountController.Login), "Account");
             }
 
-            await _emailSender.SendEmailAsync(model.Email,"You're registered!","Your account has been created successfully!");
+            //await _emailSender.SendEmailAsync(model.Email,"You're registered!","Your account has been created successfully!");
             return View(model);
         }
 

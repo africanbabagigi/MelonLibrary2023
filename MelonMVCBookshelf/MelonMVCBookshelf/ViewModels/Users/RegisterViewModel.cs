@@ -10,10 +10,7 @@ namespace MelonMVCBookshelf.ViewModels
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Text)]
-        public string Password { get; set; }
-        [Required]
-        [DataType(DataType.Text)]
-        public string PhoneNumber { get; set; }
+        public string Password { get; set; }       
         [Required]
         [DataType(DataType.Text)]
         public string FirstName { get; set; }
