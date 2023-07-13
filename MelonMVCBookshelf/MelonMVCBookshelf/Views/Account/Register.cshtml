@@ -3,60 +3,54 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <title>Register</title>
+    <title>Melon Bookshelf Log in</title>
     <link href="css/mystyles.css" rel="stylesheet" />
 </head>
 <body>
-    <!-- Section: Design Block -->
-    <section class="text-center">
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <form asp-controller="Account" asp-action="Register" method="post">
+                                <div class="mb-md-5 mt-md-4 pb-5">
 
-        <div class="card-body py-5 px-md-5">
+                                    <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
 
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8">
-                    <h2 class="fw-bold mb-5">Register now</h2>
-                    <form>
-                        <!-- 2 column grid layout with text inputs for the first and last names -->
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <div class="form-outline">
-                                    <input type="text" id="form3Example1" class="form-control" />
-                                    <label class="form-label" for="form3Example1">First name</label>
+                                    <div class="form-outline form-white mb-4">
+                                        <input asp-for="@Model.FirstName" id="typeFirstNameX" class="form-control form-control-lg" />
+                                        <label asp-for="@Model.FirstName" class="form-label" for="typeFirstNameX">First name</label>
+                                        <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-outline form-white mb-4">
+                                        <input asp-for="@Model.LastName" id="typeLasttNameX" class="form-control form-control-lg" />
+                                        <label asp-for="@Model.LastName" class="form-label" for="typeLastNameX">Last name</label>
+                                        <span asp-validation-for="@Model.LastName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-outline form-white mb-4">
+                                        <input asp-for="@Model.Email" type="email" id="typeEmailX" class="form-control form-control-lg" />
+                                        <label asp-for="@Model.Email" class="form-label" for="typeEmailX">Email</label>
+                                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <input asp-for="@Model.Password" type="password" id="typePasswordX" class="form-control form-control-lg" />
+                                        <label asp-for="@Model.Password" class="form-label" for="typePasswordX">Password</label>
+                                        <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                                    </div>
+                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">
+                                        Register
+                                    </button>
+
                                 </div>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <div class="form-outline">
-                                    <input type="text" id="form3Example2" class="form-control" />
-                                    <label class="form-label" for="form3Example2">Last name</label>
-                                </div>
-                            </div>
+                            </form>
+
                         </div>
-
-                        <!-- Email input -->
-                        <div class="form-outline mb-4">
-                            <input type="email" id="form3Example3" class="form-control" />
-                            <label class="form-label" for="form3Example3">Email address</label>
-                        </div>
-
-                        <!-- Password input -->
-                        <div class="form-outline mb-4">
-                            <input type="password" id="form3Example4" class="form-control" />
-                            <label class="form-label" for="form3Example4">Password</label>
-                        </div>
-
-                        <!-- register button -->
-                        <button type="submit" class="btn btn-primary btn-block mb-4">
-
-                            <a href="index.html"> Register </a>
-                        </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
     </section>
-    <!-- Section: Design Block -->
-
 </body>
 </html>
