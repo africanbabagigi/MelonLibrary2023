@@ -23,7 +23,7 @@ namespace MelonMVCBookshelf.Controllers
 
         public IActionResult Index() 
         {
-            var resources = _context.Resources.Select(item=> new HRResourcesViewModel(item)).ToList();
+            var resources = _context.Resources.Include("Category").Select(item=> new HRResourcesViewModel(item)).ToList();
             var model = new HRPageResourceViewModel();
             model.Items = resources;
             return View(model);
@@ -48,14 +48,14 @@ namespace MelonMVCBookshelf.Controllers
             return View(resource);
         }
 
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? resourceId)
         {
-            if (id == null)
+            if (resourceId == null)
             {
                 return NotFound();
             }
 
-            var resource = await _context.Resources.FindAsync(id);
+            var resource = await _context.Resources.FindAsync(resourceId);
             if (resource == null)
             {
                 return NotFound();
@@ -65,9 +65,9 @@ namespace MelonMVCBookshelf.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("ResourceId,Status,ResourceType,CategoryId,Author,Title,DateOfTaking,DateOfReturning")] Resource resource)
+        public async Task<IActionResult> Edit(int resourceId, [Bind("ResourceId,Status,ResourceType,CategoryId,Author,Title,DateOfTaking,DateOfReturning")] Resource resource)
         {
-            if (id != resource.ResourceId)
+            if (resourceId != resource.ResourceId)
             {
                 return NotFound();
             }
